@@ -52,8 +52,8 @@
 							</div>
 							<div class="navbar-collapse collapse navbar-responsive-collapse">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="index.jsp">New Form</a></li>
-									<li><a href="upload.html">Continue Working</a></li>
+									<li><a href="index.jsp">New Form</a></li>
+									<li class="active"><a href="upload.html">Continue Working</a></li>
 									<li><a href="#">Policy Comparison</a></li>
 									<li class="dropdown"><a href="#" class="dropdown-toggle"
 										data-toggle="dropdown">About Us <b class="caret"></b></a></li>
@@ -111,7 +111,7 @@
 												Phone Number</label>
 											<div class="col-lg-10">
 												<input type="tel" class="form-control" id="tel" name="phone"
-													placeholder="xxx-xxx-xxxx" value="">
+													placeholder="xxx-xxx-xxxx" value=<%=map.get("phone")%>>
 											</div>
 										</div>
 
@@ -120,14 +120,14 @@
 												Revised Date</label>
 											<div class="col-lg-10">
 												<input type="month" class="form-control" id="date"
-													name="date" placeholder="mm/yyyy" value="">
+													name="date" placeholder="mm/yyyy" value=<%=map.get("date")%>>
 											</div>
 
 											<label for="inputWebsite" class="col-lg-2 control-label">Website
 												URL</label>
 											<div class="col-lg-10">
 												<input type="url" class="form-control" id="url" name="url"
-													placeholder="http://www.xxx.com" value="">
+													placeholder="http://www.xxx.com" value=<%=map.get("url")%>>
 											</div>
 										</div>
 

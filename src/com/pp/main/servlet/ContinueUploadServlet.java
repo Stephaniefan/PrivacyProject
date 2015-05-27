@@ -46,7 +46,7 @@ public class ContinueUploadServlet extends HttpServlet {
 		System.out.println(map);
 		//go to index.jsp
 		request.getSession().setAttribute("continue", map);
-		response.sendRedirect("main/index.jsp");
+		response.sendRedirect("main/continueWork.jsp");
 //		RequestDispatcher d = request.getRequestDispatcher("compare/compare.jsp");
 //   		d.forward(request,response);
 	}
