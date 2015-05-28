@@ -26,6 +26,7 @@
     s.parentNode.insertBefore(ga, s);
   })();
 </script>
+<script type="text/javascript" src="js/validations.js"></script>	
 </head>
 <body>
 	<%
@@ -85,7 +86,7 @@
 
 						<div class="col-lg-12">
 							<div class="well bs-component">
-								<form class="form-horizontal" action="../PolicySubmitServlet">
+								<form name="form1" class="form-horizontal" role="form" onsubmit="return validateForm()" action="../PolicySubmitServlet">
 									<fieldset>
 										<legend>Privacy Form for Depositary Institution</legend>
 
@@ -111,7 +112,7 @@
 												Phone Number</label>
 											<div class="col-lg-10">
 												<input type="tel" class="form-control" id="tel" name="phone"
-													placeholder="xxx-xxx-xxxx" value="">
+													placeholder="xxx-xxx-xxxx" value="" required>
 											</div>
 										</div>
 
@@ -120,14 +121,14 @@
 												Revised Date</label>
 											<div class="col-lg-10">
 												<input type="month" class="form-control" id="date"
-													name="date" placeholder="mm/yyyy" value="">
+													name="date" placeholder="mm/yyyy" value="" required>
 											</div>
 
 											<label for="inputWebsite" class="col-lg-2 control-label">Website
 												URL</label>
 											<div class="col-lg-10">
 												<input type="url" class="form-control" id="url" name="url"
-													placeholder="http://www.xxx.com" value="">
+													placeholder="http://www.xxx.com" value="" required>
 											</div>
 										</div>
 
@@ -143,86 +144,86 @@
 											<div class="col-lg-10">
 												<div class="checkbox">
 													<label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="ssn" value="SSN," checked>SSN
+														id="checkbox" name="ssn" value="SSN," disabled checked>SSN
 														&nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="income" value="income,">Income
+														id="checkbox" name="income" value="income," onclick='count(0)'>Income
 														&nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="acc_balance" value="Account Balance,">Account
+														id="checkbox" name="acc_balance" value="Account Balance," onclick='count(1)'>Account
 														Balances &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="pay_his" value="Payment History,">Payment
+														id="checkbox" name="pay_his" value="Payment History," onclick='count(2)'>Payment
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="tran_his" value="Transaction History,">Transaction
+														id="checkbox" name="tran_his" value="Transaction History," onclick='count(3)'>Transaction
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
 														id="checkbox" name="tran_los_his"
-														value="Transaction or Loss History,">Transaction
+														value="Transaction or Loss History," onclick='count(4)'>Transaction
 														or Loss History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="cre_his" value="Credit History,">Credit
+														id="checkbox" name="cre_his" value="Credit History," onclick='count(5)'>Credit
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="cre_sco" value="Credit Scores,">Credit
+														id="checkbox" name="cre_sco" value="Credit Scores," onclick='count(6)'>Credit
 														Scores &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="ass" value="Assets",>Assets
+														id="checkbox" name="ass" value="Assets," onclick='count(7)'>Assets
 														&nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="inves_ex" value="Investment,">Investment
+														id="checkbox" name="inves_ex" value="Investment," onclick='count(8)'>Investment
 														Experience &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
 														id="checkbox" name="cre_insu_sco"
-														value="Credit-based Insurance Scores,">Credit-based
+														value="Credit-based Insurance Scores," onclick='count(9)'>Credit-based
 														Insurance Scores &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
 														id="checkbox" name="in_claim_his"
-														value="Insurance Claim History,">Insurance Claim
+														value="Insurance Claim History," onclick='count(10)'>Insurance Claim
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="med_info" value="Medical Information,">Medical
+														id="checkbox" name="med_info" value="Medical Information," onclick='count(11)'>Medical
 														Information &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="over_his" value="Overdraft History,">Overdraft
+														id="checkbox" name="over_his" value="Overdraft History," onclick='count(12)'>Overdraft
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="pur_his" value="Purchase History,">Purchase
+														id="checkbox" name="pur_his" value="Purchase History," onclick='count(13)'>Purchase
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
 														id="checkbox" name="acc_trans"
-														value="Account Transactions">Account Transactions
+														value="Account Transactions" onclick='count(14)'>Account Transactions
 														&nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="risk_to" value="Risk Tolerance,">Risk
+														id="checkbox" name="risk_to" value="Risk Tolerance," onclick='count(15)'>Risk
 														Tolerance &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
 														id="checkbox" name="me_rela"
-														value="Medical-related Debts,">Medical-related
+														value="Medical-related Debts," onclick='count(16)'>Medical-related
 														Debts &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
 														id="checkbox" name="cre_card"
-														value="Credit Card or Other,">Credit Card or Other
+														value="Credit Card or Other," onclick='count(17)'>Credit Card or Other
 														Debt &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
 														id="checkbox" name="mor_rate"
-														value="Mortagage Rates and Payments,">Mortgage
+														value="Mortagage Rates and Payments," onclick='count(18)'>Mortgage
 														Rates and Payments &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="re_ass" value="Retirement Assets,">Retirement
+														id="checkbox" name="re_ass" value="Retirement Assets," onclick='count(19)'>Retirement
 														Assets &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
 														id="checkbox" name="ch_acc"
-														value="Checking Account Information,">Checking
+														value="Checking Account Information," onclick='count(20)'>Checking
 														Account Information &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
 														id="checkbox" name="em_info"
-														value="Employment Information,">Employment
+														value="Employment Information," onclick='count(21)'>Employment
 														Information &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
 														id="checkbox" name="wire_trans"
-														value="Wire Transfer Instructions,">Wire Transfer
+														value="Wire Transfer Instructions," onclick='count(22)'>Wire Transfer
 														Instructions &nbsp;&nbsp;&nbsp;
 													</label>
 												</div>

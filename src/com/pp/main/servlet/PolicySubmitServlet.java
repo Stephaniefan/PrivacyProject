@@ -16,6 +16,8 @@ import javax.xml.transform.TransformerConfigurationException;
 
 import com.pp.xml.XMLIO;
 
+//import formbeans.ItemForm;
+
 /**
  * Servlet implementation class PolicySubmitServlet
  */
@@ -129,8 +131,12 @@ public class PolicySubmitServlet extends HttpServlet {
 
 	// read the input
 	private Map readInput(HttpServletRequest request) {
+//		ItemForm form = formBeanFactory.create(request);
 		Map<String, String> map = new HashMap<String, String>();
 		// read basic
+		
+		//Instead of looping on name loop on values so that we can populate the data on the form when 
+		
 		for (String s : basic) {
 			String r = request.getParameter(s);
 			if (r == null || r.length() == 0) {
