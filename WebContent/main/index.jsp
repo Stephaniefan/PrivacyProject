@@ -31,6 +31,16 @@
 	src="http://code.jquery.com/jquery-1.11.2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("input[name$='hasorno']").click(function() {
+			if ($(this).val() == "y") {
+				$("#hidden0").show();
+			} else {
+				$("#hidden0").hide();
+				$("#hidden6").hide();
+				$("#hidden6_1").hide();
+			}
+		});
+
 		$("input[name$='everyday2']").click(function() {
 			if ($(this).val() == "y") {
 				$("#hidden1").show();
@@ -181,7 +191,6 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -432,20 +441,24 @@
 
 							<div class="row" style="margin: 7px; display: none"
 								id="hidden1_1">
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-4">
 									<div class="col-lg-10">
 										<label for="ratio" class="control-label">&nbsp;&nbsp;
-											Privide mail-in form?</label>
+											Select way to provide opt-out</label>
 									</div>
 								</div>
 
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-8">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="everyday2_2" value="y"> Yes
-											</label> <label> <input type="radio" name="everyday2_2"
-												value="n" checked> No
+												type="radio" name="everyday2_2" value="y"> Telephone
+											</label>&nbsp; <label> <input type="radio" name="everyday2_2"
+												value="n" checked> Website
+											</label>&nbsp;<label> <input type="radio" name="everyday2_2"
+												value="n"> Telephone & Website
+											</label>&nbsp;<label> <input type="radio" name="everyday2_2"
+												value="n"> Mail-in form
 											</label>
 										</div>
 									</div>
@@ -512,21 +525,25 @@
 
 							<div class="row" style="margin: 7px; display: none"
 								id="hidden2_1">
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-4">
 									<div class="col-lg-10">
 										<label for="ratio" class="control-label">&nbsp;&nbsp;
-											Privide mail-in form?</label>
+											Select way to provide opt-out</label>
 									</div>
 								</div>
 
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-8">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 												type="radio" name="marketing2_2" id="option2_2y" value="y">
-												Yes
-											</label> <label> <input type="radio" name="marketing2_2"
-												id="option2_2n" value="n" checked> No
+												Telephone
+											</label>&nbsp; <label> <input type="radio" name="marketing2_2"
+												id="option2_2n" value="n" checked> Website
+											</label>&nbsp;<label> <input type="radio" name="marketing2_2"
+												id="option2_2y" value="y"> Telephone & Website
+											</label>&nbsp;<label> <input type="radio" name="marketing2_2"
+												id="option2_2y" value="y"> Mail-in form
 											</label>
 										</div>
 									</div>
@@ -588,26 +605,33 @@
 							</div>
 							<div class="row" style="margin: 7px; display: none"
 								id="hidden3_1">
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-4">
 									<div class="col-lg-10">
 										<label for="ratio" class="control-label">&nbsp;&nbsp;
-											Privide mail-in form?</label>
+											Select way to provide opt-out</label>
 									</div>
 								</div>
 
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-8">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="joint2_2" value="y"> Yes
-											</label> <label> <input type="radio" name="joint2_2"
-												value="n" checked> No
+												type="radio" name="joint2_2" value="y"> Telephone
+											</label>&nbsp; <label> <input type="radio" name="joint2_2"
+												value="n" checked> Website
+											</label> &nbsp;<label><input type="radio" name="joint2_2" value="y">
+												Telephone & Website </label>&nbsp;<label> <input type="radio"
+												name="joint2_2" value="y"> Mail-in form
 											</label>
+
 										</div>
 									</div>
 								</div>
 							</div>
 							<hr></hr>
+
+
+
 							<div class="row" style="margin: 7px">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
@@ -667,27 +691,34 @@
 
 							<div class="row" style="margin: 7px; display: none"
 								id="hidden4_1">
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-4">
 									<div class="col-lg-10">
 										<label for="ratio" class="control-label">&nbsp;&nbsp;
-											Privide mail-in form?</label>
+											Select way to provide opt-out</label>
 									</div>
 								</div>
 
 
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-8">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="afeveryday2_2" value="y"> Yes
-											</label> <label> <input type="radio" name="afeveryday2_2"
-												value="n" checked> No
+												type="radio" name="afeveryday2_2" value="y">
+												Telephone
+											</label> &nbsp;<label> <input type="radio" name="afeveryday2_2"
+												value="n" checked> Website
+											</label> &nbsp;<label><input type="radio" name="afeveryday2_2"
+												value="y"> Telephone & Website </label>&nbsp;
+												<label> <input
+												type="radio" name="afeveryday2_2" value="y"> Mail-in
+												form
 											</label>
 										</div>
 									</div>
 								</div>
 							</div>
 							<hr></hr>
+
 							<div class="row" style="margin: 7px">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
@@ -748,21 +779,25 @@
 
 							<div class="row" style="margin: 7px; display: none"
 								id="hidden5_1">
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-4">
 									<div class="col-lg-10">
 										<label for="ratio" class="control-label">&nbsp;&nbsp;
-											Privide mail-in form?</label>
+											Select way to provide opt-out</label>
 									</div>
 								</div>
 
 
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-8">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="creeveryday2_2" value="y"> Yes
+												type="radio" name="creeveryday2_2" value="y">
+												Telephone
 											</label> <label> <input type="radio" name="creeveryday2_2"
-												value="n" checked> No
+												value="n" checked> Website
+											</label><label> <input type="radio" name="creeveryday2_2" value="y">
+											Telephone & Website </label><label> <input type="radio" name="creeveryday2_2"
+												value="y"> Mail-in form
 											</label>
 										</div>
 									</div>
@@ -770,7 +805,30 @@
 							</div>
 
 							<hr></hr>
+
 							<div class="row" style="margin: 7px">
+								<div class="form-group col-md-6">
+									<div class="col-lg-10">
+										<label for="ratio" class="control-label">Does your
+											institution has affiliates?</label>
+
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+									<div class="col-lg-10">
+										<div class="radio">
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
+												type="radio" name="hasorno" value="y"> Yes
+											</label> <label> <input type="radio" name="hasorno" value="n"
+												checked> No
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row" style="margin: 7px; display: none" id="hidden0">
 								<div class="form-group col-md-6">
 
 									<div class="col-lg-10">
@@ -831,21 +889,25 @@
 
 							<div class="row" style="margin: 7px; display: none"
 								id="hidden6_1">
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-4">
 									<div class="col-lg-10">
 										<label for="ratio" class="control-label">&nbsp;&nbsp;
-											Privide mail-in form?</label>
+											Select way to provide opt-out</label>
 									</div>
 								</div>
 
 
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-8">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="afmarket2_2" value="y"> Yes
-											</label> <label> <input type="radio" name="afmarket2_2"
-												value="n" checked> No
+												type="radio" name="afmarket2_2" value="y"> Telephone
+											</label>&nbsp; <label> <input type="radio" name="afmarket2_2"
+												value="n" checked> Website
+											</label>&nbsp;<label> <input
+												type="radio" name="afmarket2_2" value="y"> Telephone & Website
+											</label>&nbsp;<label> <input
+												type="radio" name="afmarket2_2" value="y"> Mail-in form
 											</label>
 										</div>
 									</div>
@@ -914,22 +976,26 @@
 
 							<div class="row" style="margin: 7px; display: none"
 								id="hidden7_1">
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-4">
 									<div class="col-lg-10">
 										<label for="ratio" class="control-label">&nbsp;&nbsp;
-											Privide mail-in form?</label>
+											Select way to provide opt-out</label>
 									</div>
 								</div>
 
 
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-8">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="nonmarketdeb2_2" value="y"> Yes
-											</label> <label> <input type="radio" name="nonmarketdeb2_2"
-												value="n" checked> No
-											</label>
+												type="radio" name="nonmarketdeb2_2" value="y"> Telephone
+											</label> &nbsp;<label> <input type="radio" name="nonmarketdeb2_2"
+												value="n" checked> Website
+											</label>&nbsp;<label> <input
+												type="radio" name="nonmarketdeb2_2" value="y"> Telephone & Website
+											</label> &nbsp;<label> <input
+												type="radio" name="nonmarketdeb2_2" value="y"> Mail-in form
+											</label> 
 										</div>
 									</div>
 								</div>
