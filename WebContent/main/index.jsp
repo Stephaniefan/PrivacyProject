@@ -26,9 +26,7 @@
 		s.parentNode.insertBefore(ga, s);
 	})();
 </script>
-<<<<<<< Updated upstream
-<script type="text/javascript" src="js/validations.js"></script>	
-=======
+<script type="text/javascript" src="js/validations.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.2.js"></script>
 <script type="text/javascript">
@@ -147,8 +145,6 @@
 
 	});
 </script>
-
->>>>>>> Stashed changes
 </head>
 <body>
 	<div class="container">
@@ -190,79 +186,15 @@
 			</div>
 		</div>
 
-<<<<<<< Updated upstream
-		<h3 id="nav-tabs">Select Your Institution Type</h3>
-		<div class="bs-component">
-			<ul class="nav nav-tabs">
-				<li class="active"><a href="#Depositary" data-toggle="tab">Depositary</a></li>
-				<li><a href="#Contractual" data-toggle="tab">Contractual</a></li>
-				<li><a href="#Investment" data-toggle="tab">Investment</a></li>
-			</ul>
-			<div id="myTabContent" class="tab-content">
-				<div class="tab-pane fade active in" id="Depositary">
-					<div class="row">
-
-						<!-- form -->
-
-						<div class="col-lg-12">
-							<div class="well bs-component">
-								<form name="form1" class="form-horizontal" role="form" onsubmit="return validateForm()" action="../PolicySubmitServlet">
-									<fieldset>
-										<legend>Privacy Form for Depositary Institution</legend>
-
-										<!-- input text -->
-										<div class="form-group col-md-6">
-											<label for="inputPassword" class="col-lg-2 control-label">Institution
-												Name</label>
-											<div class="col-lg-10">
-
-												<% if(map != null && map.get("ins_name") != null){%>
-												<input type="text" class="form-control" id="name"
-													name="ins_name" placeholder="Institution Name"
-													value=<%=map.get("ins_name")%>>
-												<% }else{
-                    							 %>
-												<input type="text" class="form-control" id="name"
-													name="ins_name" placeholder="Institution Name">
-												<%} %>
-=======
-		<h3 id="nav-tabs">New Form</h3>
-		<form class="form-horizontal" action="../PolicySubmitServlet">
+		<h3 id="nav-tabs">New Forms</h3>
+		<form name="form1" class="form-horizontal" role="form"
+			onsubmit="return validateForm()" action="../PolicySubmitServlet">
 			<div class="row">
->>>>>>> Stashed changes
-
 				<!-- form -->
-
-<<<<<<< Updated upstream
-											<label for="inputPhone" class="col-lg-2 control-label">Contact
-												Phone Number</label>
-											<div class="col-lg-10">
-												<input type="tel" class="form-control" id="tel" name="phone"
-													placeholder="xxx-xxx-xxxx" value="" required>
-											</div>
-										</div>
-
-										<div class="form-group col-md-6">
-											<label for="date" class="col-lg-2 control-label">Last
-												Revised Date</label>
-											<div class="col-lg-10">
-												<input type="month" class="form-control" id="date"
-													name="date" placeholder="mm/yyyy" value="" required>
-											</div>
-
-											<label for="inputWebsite" class="col-lg-2 control-label">Website
-												URL</label>
-											<div class="col-lg-10">
-												<input type="url" class="form-control" id="url" name="url"
-													placeholder="http://www.xxx.com" value="" required>
-											</div>
-=======
 				<div class="col-lg-12">
 					<div class="well bs-component">
-
 						<fieldset>
 							<legend>Part I</legend>
-
 							<!-- input text -->
 							<div class="form-group col-md-6">
 								<label for="inputPassword" class="col-lg-2 control-label">Institution
@@ -308,83 +240,94 @@
 								<div class="col-lg-10">
 									<div class="checkbox">
 										<label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="ssn" value="SSN," checked>SSN
+											id="checkbox" name="ssn" value="SSN," disabled checked>SSN
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="income" value="income,">Income
+											id="checkbox" name="income" value="income,"
+											onclick='count(0)'>Income &nbsp;&nbsp;&nbsp;
+										</label> <label class="col-md-3"> <input type="checkbox"
+											id="checkbox" name="acc_balance" value="Account Balance,"
+											onclick='count(1)'>Account Balances
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="acc_balance" value="Account Balance,">Account
-											Balances &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="pay_his" value="Payment History,"
+											onclick='count(2)'>Payment History &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="pay_his" value="Payment History,">Payment
-											History &nbsp;&nbsp;&nbsp;
-										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="tran_his" value="Transaction History,">Transaction
-											History &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="tran_his" value="Transaction History,"
+											onclick='count(3)'>Transaction History
+											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
 											id="checkbox" name="tran_los_his"
-											value="Transaction or Loss History,">Transaction or
-											Loss History &nbsp;&nbsp;&nbsp;
+											value="Transaction or Loss History," onclick='count(4)'>Transaction
+											or Loss History &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="cre_his" value="Credit History,">Credit
-											History &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="cre_his" value="Credit History,"
+											onclick='count(5)'>Credit History &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="cre_sco" value="Credit Scores,">Credit
-											Scores &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="cre_sco" value="Credit Scores,"
+											onclick='count(6)'>Credit Scores &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="ass" value="Assets",>Assets
+											id="checkbox" name="ass" value="Assets," onclick='count(7)'>Assets
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="inves_ex" value="Investment,">Investment
-											Experience &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="inves_ex" value="Investment,"
+											onclick='count(8)'>Investment Experience
+											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
 											id="checkbox" name="cre_insu_sco"
-											value="Credit-based Insurance Scores,">Credit-based
+											value="Credit-based Insurance Scores," onclick='count(9)'>Credit-based
 											Insurance Scores &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
 											id="checkbox" name="in_claim_his"
-											value="Insurance Claim History,">Insurance Claim
-											History &nbsp;&nbsp;&nbsp;
+											value="Insurance Claim History," onclick='count(10)'>Insurance
+											Claim History &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="med_info" value="Medical Information,">Medical
-											Information &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="med_info" value="Medical Information,"
+											onclick='count(11)'>Medical Information
+											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="over_his" value="Overdraft History,">Overdraft
-											History &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="over_his" value="Overdraft History,"
+											onclick='count(12)'>Overdraft History
+											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="pur_his" value="Purchase History,">Purchase
-											History &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="pur_his" value="Purchase History,"
+											onclick='count(13)'>Purchase History
+											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="acc_trans" value="Account Transactions">Account
-											Transactions &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="acc_trans" value="Account Transactions"
+											onclick='count(14)'>Account Transactions
+											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="risk_to" value="Risk Tolerance,">Risk
-											Tolerance &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="risk_to" value="Risk Tolerance,"
+											onclick='count(15)'>Risk Tolerance &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="me_rela" value="Medical-related Debts,">Medical-related
-											Debts &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="me_rela" value="Medical-related Debts,"
+											onclick='count(16)'>Medical-related Debts
+											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="cre_card" value="Credit Card or Other,">Credit
-											Card or Other Debt &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="cre_card" value="Credit Card or Other,"
+											onclick='count(17)'>Credit Card or Other Debt
+											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
 											id="checkbox" name="mor_rate"
-											value="Mortagage Rates and Payments,">Mortgage Rates
-											and Payments &nbsp;&nbsp;&nbsp;
+											value="Mortagage Rates and Payments," onclick='count(18)'>Mortgage
+											Rates and Payments &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="re_ass" value="Retirement Assets,">Retirement
-											Assets &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="re_ass" value="Retirement Assets,"
+											onclick='count(19)'>Retirement Assets
+											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
 											id="checkbox" name="ch_acc"
-											value="Checking Account Information,">Checking
+											value="Checking Account Information," onclick='count(20)'>Checking
 											Account Information &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="em_info" value="Employment Information,">Employment
-											Information &nbsp;&nbsp;&nbsp;
+											id="checkbox" name="em_info" value="Employment Information,"
+											onclick='count(21)'>Employment Information
+											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
 											id="checkbox" name="wire_trans"
-											value="Wire Transfer Instructions,">Wire Transfer
-											Instructions &nbsp;&nbsp;&nbsp;
+											value="Wire Transfer Instructions," onclick='count(22)'>Wire
+											Transfer Instructions &nbsp;&nbsp;&nbsp;
 										</label>
 									</div>
 								</div>
@@ -408,6 +351,7 @@
 										share your customers personal information</label>
 									<!-- </div> -->
 								</div>
+
 
 								<div class="form-group col-md-3">
 									<!-- <div class="col-lg-10"> -->
@@ -444,109 +388,12 @@
 											</label> <label> <input type="radio" name="everyday1"
 												value="n" checked> No
 											</label>
->>>>>>> Stashed changes
 										</div>
 									</div>
-
-<<<<<<< Updated upstream
-										<!-- checkbox -->
-
-										<div class="form-group col-md-12">
-											<label for="checkbox" class="col-lg-2 control-label">Select
-												the types of personal information your institution will
-												collect and share:</label>
-											<p>&nbsp;&nbsp;&nbsp; * Select 5 more terms other than
-												SSN to complete</p>
-
-											<div class="col-lg-10">
-												<div class="checkbox">
-													<label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="ssn" value="SSN," disabled checked>SSN
-														&nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="income" value="income," onclick='count(0)'>Income
-														&nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="acc_balance" value="Account Balance," onclick='count(1)'>Account
-														Balances &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="pay_his" value="Payment History," onclick='count(2)'>Payment
-														History &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="tran_his" value="Transaction History," onclick='count(3)'>Transaction
-														History &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="tran_los_his"
-														value="Transaction or Loss History," onclick='count(4)'>Transaction
-														or Loss History &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="cre_his" value="Credit History," onclick='count(5)'>Credit
-														History &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="cre_sco" value="Credit Scores," onclick='count(6)'>Credit
-														Scores &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="ass" value="Assets," onclick='count(7)'>Assets
-														&nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="inves_ex" value="Investment," onclick='count(8)'>Investment
-														Experience &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="cre_insu_sco"
-														value="Credit-based Insurance Scores," onclick='count(9)'>Credit-based
-														Insurance Scores &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="in_claim_his"
-														value="Insurance Claim History," onclick='count(10)'>Insurance Claim
-														History &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="med_info" value="Medical Information," onclick='count(11)'>Medical
-														Information &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="over_his" value="Overdraft History," onclick='count(12)'>Overdraft
-														History &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="pur_his" value="Purchase History," onclick='count(13)'>Purchase
-														History &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="acc_trans"
-														value="Account Transactions" onclick='count(14)'>Account Transactions
-														&nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="risk_to" value="Risk Tolerance," onclick='count(15)'>Risk
-														Tolerance &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="me_rela"
-														value="Medical-related Debts," onclick='count(16)'>Medical-related
-														Debts &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="cre_card"
-														value="Credit Card or Other," onclick='count(17)'>Credit Card or Other
-														Debt &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="mor_rate"
-														value="Mortagage Rates and Payments," onclick='count(18)'>Mortgage
-														Rates and Payments &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="re_ass" value="Retirement Assets," onclick='count(19)'>Retirement
-														Assets &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="ch_acc"
-														value="Checking Account Information," onclick='count(20)'>Checking
-														Account Information &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="em_info"
-														value="Employment Information," onclick='count(21)'>Employment
-														Information &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="wire_trans"
-														value="Wire Transfer Instructions," onclick='count(22)'>Wire Transfer
-														Instructions &nbsp;&nbsp;&nbsp;
-													</label>
-												</div>
-											</div>
-=======
 								</div>
+
+
+
 								<div class="form-group col-md-3">
 									<div class="col-lg-10">
 										<div class="radio">
@@ -555,21 +402,19 @@
 											</label> <label> <input type="radio" name="everyday2"
 												value="n" checked> No
 											</label>
->>>>>>> Stashed changes
 										</div>
 									</div>
 								</div>
 							</div>
 
-
-
 							<div class="row" style="margin: 7px; display: none" id="hidden1">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide opt-out?</label>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
@@ -584,11 +429,12 @@
 								</div>
 							</div>
 
+
 							<div class="row" style="margin: 7px; display: none"
 								id="hidden1_1">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>&nbsp;&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide mail-in form?</label>
 									</div>
 								</div>
@@ -628,7 +474,6 @@
 											</label>
 										</div>
 									</div>
-
 								</div>
 								<div class="form-group col-md-3">
 									<div class="col-lg-10">
@@ -643,14 +488,14 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="row" style="margin: 7px; display: none" id="hidden2">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide opt-out?</label>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
@@ -669,7 +514,7 @@
 								id="hidden2_1">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>&nbsp;&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide mail-in form?</label>
 									</div>
 								</div>
@@ -707,7 +552,6 @@
 											</label>
 										</div>
 									</div>
-
 								</div>
 								<div class="form-group col-md-3">
 									<div class="col-lg-10">
@@ -721,14 +565,14 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="row" style="margin: 7px; display: none" id="hidden3">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide opt-out?</label>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
@@ -742,12 +586,11 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="row" style="margin: 7px; display: none"
 								id="hidden3_1">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>&nbsp;&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide mail-in form?</label>
 									</div>
 								</div>
@@ -773,6 +616,7 @@
 										<p>information about your transactions and experiences</p>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-3">
 									<div class="col-lg-10">
@@ -802,10 +646,11 @@
 							<div class="row" style="margin: 7px; display: none" id="hidden4">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide opt-out?</label>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
@@ -824,10 +669,11 @@
 								id="hidden4_1">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>&nbsp;&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide mail-in form?</label>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
@@ -850,6 +696,7 @@
 										<p>information about your creditworthiness</p>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-3">
 									<div class="col-lg-10">
@@ -881,7 +728,7 @@
 							<div class="row" style="margin: 7px; display: none" id="hidden5">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide opt-out?</label>
 									</div>
 								</div>
@@ -903,10 +750,11 @@
 								id="hidden5_1">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>&nbsp;&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide mail-in form?</label>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
@@ -920,6 +768,7 @@
 									</div>
 								</div>
 							</div>
+
 							<hr></hr>
 							<div class="row" style="margin: 7px">
 								<div class="form-group col-md-6">
@@ -929,6 +778,7 @@
 											affiliates to market to you</label>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-3">
 									<div class="col-lg-10">
@@ -960,10 +810,11 @@
 							<div class="row" style="margin: 7px; display: none" id="hidden6">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide opt-out?</label>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
@@ -982,10 +833,11 @@
 								id="hidden6_1">
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
-										<label for="ratio" class="control-label">&mdash;>&nbsp;&mdash;>
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
 											Privide mail-in form?</label>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-6">
 									<div class="col-lg-10">
@@ -999,6 +851,7 @@
 									</div>
 								</div>
 							</div>
+
 							<hr></hr>
 							<div class="row" style="margin: 7px">
 								<div class="form-group col-md-6">
@@ -1008,6 +861,7 @@
 											nonaffiliates to market to you</label>
 									</div>
 								</div>
+
 
 								<div class="form-group col-md-3">
 									<div class="col-lg-10">
@@ -1034,50 +888,51 @@
 										</div>
 									</div>
 								</div>
+							</div>
 
-								<div class="row" style="margin: 7px; display: none" id="hidden7">
-									<div class="form-group col-md-6">
-										<div class="col-lg-10">
-											<label for="ratio" class="control-label">&mdash;>
-												Privide opt-out?</label>
-										</div>
-									</div>
-
-									<div class="form-group col-md-6">
-										<div class="col-lg-10">
-											<div class="radio">
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-													type="radio" name="nonmarketdeb2_1" value="y"> Yes
-												</label> <label> <input type="radio" name="nonmarketdeb2_1"
-													value="n" checked> No
-												</label>
-											</div>
-										</div>
+							<div class="row" style="margin: 7px; display: none" id="hidden7">
+								<div class="form-group col-md-6">
+									<div class="col-lg-10">
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
+											Privide opt-out?</label>
 									</div>
 								</div>
 
-								<div class="row" style="margin: 7px; display: none"
-									id="hidden7_1">
-									<div class="form-group col-md-6">
-										<div class="col-lg-10">
-											<label for="ratio" class="control-label">&mdash;>&nbsp;&mdash;>
-												Privide mail-in form?</label>
-										</div>
-									</div>
 
-									<div class="form-group col-md-6">
-										<div class="col-lg-10">
-											<div class="radio">
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-													type="radio" name="nonmarketdeb2_2" value="y"> Yes
-												</label> <label> <input type="radio" name="nonmarketdeb2_2"
-													value="n" checked> No
-												</label>
-											</div>
+								<div class="form-group col-md-6">
+									<div class="col-lg-10">
+										<div class="radio">
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
+												type="radio" name="nonmarketdeb2_1" value="y"> Yes
+											</label> <label> <input type="radio" name="nonmarketdeb2_1"
+												value="n" checked> No
+											</label>
 										</div>
 									</div>
 								</div>
+							</div>
 
+							<div class="row" style="margin: 7px; display: none"
+								id="hidden7_1">
+								<div class="form-group col-md-6">
+									<div class="col-lg-10">
+										<label for="ratio" class="control-label">&nbsp;&nbsp;
+											Privide mail-in form?</label>
+									</div>
+								</div>
+
+
+								<div class="form-group col-md-6">
+									<div class="col-lg-10">
+										<div class="radio">
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
+												type="radio" name="nonmarketdeb2_2" value="y"> Yes
+											</label> <label> <input type="radio" name="nonmarketdeb2_2"
+												value="n" checked> No
+											</label>
+										</div>
+									</div>
+								</div>
 							</div>
 						</fieldset>
 					</div>
