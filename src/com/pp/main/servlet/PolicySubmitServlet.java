@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerConfigurationException;
 
 import com.pp.xml.XMLIO;
 
@@ -20,76 +22,100 @@ import com.pp.xml.XMLIO;
 @WebServlet("/PolicySubmitServlet")
 public class PolicySubmitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	String[] basic = {"ins_name","phone","date","url",""};
-	String[] checkbox = {"ssn","income","acc_balance","pay_his","tran_his","tran_los_his","cre_his","cre_sco","ass","inves_ex"
-			,"cre_insu_sco","in_claim_his","med_info","over_his","pur_his","acc_trans","risk_to","me_rela","cre_card","mor_rate","re_ass"
-			,"ch_acc","em_info","wire_trans"};
-	String[] yes_no ={"everyday1","everyday2","marketing1","marketing2","joint1","joint2","afeveryday1","afeveryday2"
-			,"creeveryday1","creeveryday2","afmarket1","afmarket2","nonmarketdeb1","nonmarketdeb2","nonmarket1","nonmarket2"
-			};
-	String[] text_area={"who_provide","how_protect","how_collect","aff_in","nonaff_in","joint_market_in","other_info"};
-	
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PolicySubmitServlet() {
-        super();
-    }
+	private static final String SAVE_DIR = "tempFiles";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+	String[] basic = { "ins_name", "phone", "date", "url", "" };
+	String[] checkbox = { "ssn", "income", "acc_balance", "pay_his",
+			"tran_his", "tran_los_his", "cre_his", "cre_sco", "ass",
+			"inves_ex", "cre_insu_sco", "in_claim_his", "med_info", "over_his",
+			"pur_his", "acc_trans", "risk_to", "me_rela", "cre_card",
+			"mor_rate", "re_ass", "ch_acc", "em_info", "wire_trans" };
+	String[] yes_no = { "everyday1", "everyday2", "marketing1", "marketing2",
+			"joint1", "joint2", "afeveryday1", "afeveryday2", "creeveryday1",
+			"creeveryday2", "afmarket1", "afmarket2", "nonmarketdeb1",
+			"nonmarketdeb2", "nonmarket1", "nonmarket2" };
+	String[] text_area = { "who_provide", "how_protect", "how_collect",
+			"aff_in", "nonaff_in", "joint_market_in", "other_info" };
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public PolicySubmitServlet() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
 
-		
-		
-		//check action whether save or submit
-		
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		// check action whether save or submit
+
 		String action = request.getParameter("action");
-		if(action == null || action.length() == 0){
+		if (action == null || action.length() == 0) {
 			returnError();
-		}else if(action.equals("submit")){
-			formSubmit(request,response);
-		}else if(action.equals("save")){
-			formSave(request,response);
-		}else{
+		} else if (action.equals("submit")) {
+			formSubmit(request, response);
+		} else if (action.equals("save")) {
+			formSave(request, response);
+		} else {
 			returnError();
 		}
-		
-		
-		
-		
+
 	}
-	
-	//save form
+
+	// save form
 	private void formSave(HttpServletRequest request,
-			HttpServletResponse response) {
-		Map<String,String> map = readInput(request);
-		String fileName = "save.xml";
-		//using key-value pair store to xml
-		File file = new File(getServletContext().getRealPath("/file"), fileName);
-		XMLIO.writeToXML(map, file);
-		
-		//redirect to a page to download
-		request.getSession().setAttribute("downLoad", fileName);
+			HttpServletResponse response) throws IOException {
 		try {
-			response.sendRedirect("main/download.jsp");
+			Map<String, String> map = readInput(request);
+			String fileName = "save.xml";
+			// using key-value pair store to xml
+			File file = new File(getServletContext().getRealPath("/file"),
+					fileName);
+			XMLIO.writeToXML(map, file);
+	
+			String appPath = request.getServletContext().getRealPath("");
+			String filePath = appPath + File.separator + SAVE_DIR;
+
+			System.out.println("Before downloading "+appPath);
+			System.out.println("file path is "+filePath);
+			
+			
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
+			response.setContentType("APPLICATION/OCTET-STREAM");
+			response.setHeader("Content-Disposition", "attachment; filename=\""
+					+ fileName + "\"");
+
+			java.io.FileInputStream fileInputStream = new java.io.FileInputStream(getServletContext().getRealPath("/file")+
+					File.separator +fileName);
+
+			int i;
+			while ((i = fileInputStream.read()) != -1) {
+				out.write(i);
+			}
+			fileInputStream.close();
+			out.close();
+
+		
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
-	//submit form
+	// submit form
 	private void formSubmit(HttpServletRequest request,
 			HttpServletResponse response) {
-		
-		Map<String,String> map = readInput(request);
-		//send the map to result page
+
+		Map<String, String> map = readInput(request);
+		// send the map to result page
 		System.out.println(map);
 		request.getSession().setAttribute("policyMap", map);
 		try {
@@ -98,57 +124,55 @@ public class PolicySubmitServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
-	//read the input
+	// read the input
 	private Map readInput(HttpServletRequest request) {
-		Map<String,String> map = new HashMap<String,String>();
-		//read basic
-		for(String s:basic){
+		Map<String, String> map = new HashMap<String, String>();
+		// read basic
+		for (String s : basic) {
 			String r = request.getParameter(s);
-			if(r == null || r.length() == 0){
+			if (r == null || r.length() == 0) {
 				continue;
 			}
 			map.put(s, r);
 		}
-		for(String s:yes_no){
+		for (String s : yes_no) {
 			String result = request.getParameter(s);
-			if(result == null || result .length() == 0){
+			if (result == null || result.length() == 0) {
 				continue;
 			}
-			if(result.equals("y")){
+			if (result.equals("y")) {
 				map.put(s, "Yes");
-			}else{
+			} else {
 				map.put(s, "No");
 			}
 		}
-		for(String s:text_area){
+		for (String s : text_area) {
 			String r = request.getParameter(s);
-			if(r == null || r.length() == 0){
+			if (r == null || r.length() == 0) {
 				continue;
 			}
 			map.put(s, r);
 		}
-		
-		for(String s:checkbox){
+
+		for (String s : checkbox) {
 			String r = request.getParameter(s);
-			if(r == null || r.length() == 0){
+			if (r == null || r.length() == 0) {
 				continue;
 			}
 			map.put(s, r);
 		}
-		
-		
+
 		return map;
 	}
 
 	/*
-	 * form is not submit corrected 
+	 * form is not submit corrected
 	 */
-	public void returnError(){
-		
+	public void returnError() {
+
 	}
-	
 
 }
