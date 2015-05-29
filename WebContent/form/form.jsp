@@ -1,7 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page import="java.util.Map" %>
+<%@ page import="java.util.Map"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="x" uri="http://java.sun.com/jstl/xml"%>
+<%@   page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,46 +19,54 @@
       <script src="../bower_components/respond/dest/respond.min.js"></script>
     <![endif]-->
 <script>
+	var _gaq = _gaq || [];
+	_gaq.push([ '_setAccount', 'UA-23019901-1' ]);
+	_gaq.push([ '_setDomainName', "bootswatch.com" ]);
+	_gaq.push([ '_setAllowLinker', true ]);
+	_gaq.push([ '_trackPageview' ]);
 
-     var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-23019901-1']);
-      _gaq.push(['_setDomainName', "bootswatch.com"]);
-        _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-     (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-
-    </script>
+	(function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+				: 'http://www')
+				+ '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+</script>
 </head>
 <body>
 
-<%
-	Map<String,String> map = (Map<String,String>) session.getAttribute("policyMap");
-String[] basic = {"ins_name","phone","date","url",""};
-String[] checkbox = {"ssn","income","acc_balance","pay_his","tran_his","tran_los_his","cre_his","cre_sco","ass","inves_ex"
-		,"cre_insu_sco","in_claim_his","med_info","over_his","pur_his","acc_trans","risk_to","me_rela","cre_card","mor_rate","re_ass"
-		,"ch_acc","em_info","wire_trans"};
-String[] yes_no ={"everyday1","everyday2","marketing1","marketing2","joint1","joint2","afeveryday1","afeveryday2"
-		,"creeveryday1","creeveryday2","afmarket1","afmarket2","nonmarketdeb1","nonmarketdeb2","nonmarket1","nonmarket2"
-		};
-String[] text_area={"who_provide","how_protect","how_collect","aff_in","nonaff_in","joint_market_in","other_info"};
-
-
-
-
-%>
+	<%
+		Map<String, String> map = (Map<String, String>) session
+				.getAttribute("policyMap");
+		String[] basic = { "ins_name", "phone", "date", "url", "" };
+		String[] checkbox = { "ssn", "income", "acc_balance", "pay_his",
+				"tran_his", "tran_los_his", "cre_his", "cre_sco", "ass",
+				"inves_ex", "cre_insu_sco", "in_claim_his", "med_info",
+				"over_his", "pur_his", "acc_trans", "risk_to", "me_rela",
+				"cre_card", "mor_rate", "re_ass", "ch_acc", "em_info",
+				"wire_trans" };
+		String[] yes_no = { "everyday1", "everyday2", "everyday2_1",
+				"everyday2_2", "marketing1", "marketing2", "joint1",
+				"joint2", "afeveryday1", "afeveryday2", "creeveryday1",
+				"creeveryday2", "afmarket1", "afmarket2", "nonmarketdeb1",
+				"nonmarketdeb2", "nonmarket1", "nonmarket2" };
+		String[] text_area = { "who_provide", "how_protect", "how_collect",
+				"aff_in", "nonaff_in", "joint_market_in", "other_info" };
+	%>
 
 
 	<div class="bs-docs-section">
 
 		<div class="row">
 			<div class="col-lg-12">
-				 <div class="page-header">
-					<p style="margin-left:800px">Rev. <%=map.get("date") %></p>
+				<div class="page-header">
+					<p style="margin-left: 800px">
+						Rev.
+						<%=map.get("date")%></p>
 				</div>
 
 				<div class="bs-component">
@@ -125,7 +136,8 @@ String[] text_area={"who_provide","how_protect","how_collect","aff_in","nonaff_i
 							<tr>
 
 								<th>Reasons we can share your personal information</th>
-								<th>Does We Share?</th>
+								<th>Does &nbsp&nbsp <%=map.get("ins_name")%>Share?
+								</th>
 								<th>Can you limit this sharing?</th>
 							</tr>
 						</thead>
@@ -137,66 +149,118 @@ String[] text_area={"who_provide","how_protect","how_collect","aff_in","nonaff_i
 									respond to court orders and legal investigations, or report to
 									credit bureaus</td>
 
-								<td width="30%" align="center"><%=map.get("everyday1") %></td>
-								<td width="30"><%=map.get("everyday2") %></td>
+								<td width="30%" align="center"><%=map.get("everyday1")%></td>
+								<td width="30"><%=map.get("everyday2")%></td>
 							</tr>
 							<tr>
 								<td width="40%">For our marketing purposes — to offer our
 									products and services to you</td>
 
-								<td width="30%" align="center"><%=map.get("marketing1") %></td>
-								<td width="30"><%=map.get("marketing2") %></td>
+								<td width="30%" align="center"><%=map.get("marketing1")%></td>
+								<td width="30"><%=map.get("marketing2")%></td>
 							</tr>
 							<tr>
 
 								<td width="40%">For joint marketing with other financial
 									companies</td>
 
-								<td width="30%" align="center"><%=map.get("joint1") %></td>
-								<td width="30"><%=map.get("everyday2") %></td>
+								<td width="30%" align="center"><%=map.get("joint1")%></td>
+								<td width="30"><%=map.get("everyday2")%></td>
 							</tr>
 							<tr>
 
 								<td width="40%">For our affiliates’ everyday business
 									purposes — Information about your transactions and experiences</td>
 
-								<td width="30%" align="center"><%=map.get("afeveryday1") %></td>
-								<td width="30"><%=map.get("afeveryday2") %></td>
+								<td width="30%" align="center"><%=map.get("afeveryday1")%></td>
+								<td width="30"><%=map.get("afeveryday2")%></td>
 							</tr>
 							<tr>
 
 								<td width="40%">For our affiliates’ everyday business
 									purposes — Information about your creditworthiness</td>
 
-								<td width="30%" align="center"><%=map.get("creeveryday1") %></td>
-								<td width="30"><%=map.get("creeveryday2") %></td>
+								<td width="30%" align="center"><%=map.get("creeveryday1")%></td>
+								<td width="30"><%=map.get("creeveryday2")%></td>
 							</tr>
 							<tr>
 
-								<td width="40%">For nonaffiliates to market to you — for
-									all credit card accounts</td>
-
-								<td width="30%" align="center"><%=map.get("afmarket1") %></td>
-								<td width="30"><%=map.get("afmarket2") %></td>
+								<td width="40%">For our affiliate's to market to you</td>
+								<td width="30%" align="center"><%=map.get("afmarket1")%></td>
+								<td width="30"><%=map.get("afmarket2")%></td>
 							</tr>
 							<tr>
 
-								<td width="40%">For nonaffiliates to market to you — for
-									accounts and services endorsed by another organization (e.g.,
-									debit card co-branded with a baseball team) “Sponsored
-									Accounts”</td>
-
-								<td width="30%" align="center"><%=map.get("nonmarketdeb1") %></td>
-								<td width="30"><%=map.get("nonmarketdeb2") %></td>
+								<td width="40%">For nonaffiliates to market to you</td>
+								<td width="30%" align="center"><%=map.get("nonmarketdeb1")%></td>
+								<td width="30"><%=map.get("nonmarketdeb2")%></td>
 							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- /example -->
+			</div>
+		</div>
+	</div>
+	<%
+		if (map.get("creeveryday2_1").equals("Yes")) {
+	%>
+	<div class="bs-docs-section">
+
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class="bs-component">
+					<table class="table table-striped table-hover ">
+
+						<tbody>
 							<tr>
 
-								<td width="40%">For nonaffiliates to market to you — for
-									accounts other than credit card accounts and Sponsored
-									Accounts, such as insurance, investments, deposit and lending</td>
+								<td width="15%">To limit our sharing</td>
 
-								<td width="30%" align="center"><%=map.get("nonmarket1") %></td>
-								<td width="30"><%=map.get("nonmarket2") %></td>
+								<td width="75%" align="left">
+									<ul>
+										<li>Call &nbsp&nbsp&nbsp<%=map.get("phone")%>&nbsp&nbsp&nbspour
+											menu will prompt you through your choices
+										</li>
+										<li>Visit us online:&nbsp&nbsp&nbsp<%=map.get("url")%></li>
+									</ul>
+									<p>Please note: If you are a new customer, we can begin
+										sharing your information 30 days from the date we sent this
+										notice. When you are no longer our customer, we continue to
+										share your information as described in this notice. However,
+										you can contact us at any time to limiting our sharing.</p>
+
+
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- /example -->
+			</div>
+		</div>
+	</div>
+	<%
+		}
+	%>
+
+
+
+	<div class="bs-docs-section">
+
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class="bs-component">
+					<table class="table table-striped table-hover ">
+
+						<tbody>
+							<tr>
+
+								<td width="15%" backgrounf="#f9f9f9">Questions?</td>
+								<td width="75%" align="left">Call &nbsp<%=map.get("phone")%>or
+									go to&nbsp<%=map.get("url")%></td>
 							</tr>
 
 						</tbody>
@@ -214,41 +278,59 @@ String[] text_area={"who_provide","how_protect","how_collect","aff_in","nonaff_i
 
 				<div class="bs-component">
 					<table class="table table-striped table-hover ">
-
+						<thead>
+							<tr>
+								<th colspan="3">Mail-inForm</th>
+							</tr>
+						</thead>
 						<tbody>
 							<tr>
 
-								<td width="15%">To limit our sharing</td>
+								<td width="15%" rowspan="2"><p>Leave Blank OR If you
+										have a joint account, your choice(s) will apply to everyone on
+										your account uncless you mark below.</p> <label><input type="radio"> Apply my
+										choices only to me</label></td>
 
-								<td width="75%" align="left">
-									<ul>
-										<li>Call -our menu will prompt you through your choices</li>
-										<li>Visit us online:</li>
-										<li>Talk to a banking center associate</li>
-										<li>Talk to your assigned account representative (e.g.,
-											financial advisor, mortgage loan officer)</li>
-											
-									</ul>
+								<td width="85%" align="left" colspan="2">Mark any/all you want to
+									limit: <label> <input type="radio"> &nbspDo not share
+										information about my creditworthines with your affiliates for
+										their everyday business purposes.
+								</label> <label><input type="radio">&nbsp Do not allow your
+										affiliates to use my personal information to market to me.</label> <label><input
+										type="radio"> &nbspDo not share my personal information with
+										nonaffiliates to market their products and services to me.</label>
 								</td>
 							</tr>
 							<tr>
-								<td width="15%">To limit direct marketing contact</td>
-								<td width="75%" align="left">
-									<ul>
-										<li>Call -our menu will prompt you through your choices</li>
-										<li>Visit us online:</li>
-										<li>Talk to a banking center associate</li>
-										<li>Talk to your assigned account representative (e.g.,
-											financial advisor, mortgage loan officer)</li>
-									</ul>
+								<td width="60" align="left">
+									<table>
+										<tbody>
+											<tr>
+												<td width="15%">Name</td>
+											</tr>
+											<tr>
+												<td rowspan="3">Address<br> City, State, Zip
+												</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+
+											</tr>
+
+										</tbody>
+									</table>
 								</td>
-							</tr>
-							<tr>
+								<td width="40">
+									<p>
+										Mail to: <br>
+									</p>
+								</td>
 
-								<td width="15%" backgrounf="#f9f9f9">Questions?</td>
-								<td width="75%" align="left">Call or go to</td>
 							</tr>
-
 						</tbody>
 					</table>
 				</div>
@@ -276,7 +358,7 @@ String[] text_area={"who_provide","how_protect","how_collect","aff_in","nonaff_i
 
 								<td width="35%">Who is providing this notice?</td>
 
-								<td width="50%" align="left"><p><%=map.get("who_provide") %></p></td>
+								<td width="50%" align="left"><p><%=map.get("who_provide")%></p></td>
 							</tr>
 						</tbody>
 					</table>
@@ -302,17 +384,19 @@ String[] text_area={"who_provide","how_protect","how_collect","aff_in","nonaff_i
 						<tbody>
 							<tr>
 
-								<td width="35%">How does ** protect my personal
-									information?</td>
+								<td width="35%">How does <%=map.get("ins_name")%> protect
+									my personal information?
+								</td>
 
-								<td width="50%" align="left"><p><%=map.get("how_protect") %></p></td>
+								<td width="50%" align="left"><p><%=map.get("how_protect")%></p></td>
 							</tr>
 							<tr>
 
-								<td width="35%">How does ** collect my personal
-									information?</td>
+								<td width="35%">How does <%=map.get("url")%> collect my
+									personal information?
+								</td>
 
-								<td width="50%" align="left"><p><%=map.get("how_collect") %></p></td>
+								<td width="50%" align="left"><p><%=map.get("how_collect")%></p></td>
 							</tr>
 							<tr>
 
@@ -358,8 +442,7 @@ String[] text_area={"who_provide","how_protect","how_collect","aff_in","nonaff_i
 										common ownership or control. They can be financial and
 										nonfinancial companies.</p>
 									<ul>
-										<li>Our affiliates include companies with the PNC name,
-											and financial companies such as Harris Williams, LLC.</li>
+										<li></li>
 									</ul></td>
 							</tr>
 							<tr>
@@ -371,8 +454,8 @@ String[] text_area={"who_provide","how_protect","how_collect","aff_in","nonaff_i
 										common ownership or control. They can be financial and
 										nonfinancial companies.</p>
 									<ul>
-										<li>** does not share with nonaffiliates so they can
-											market to you.</li>
+										<li><%=map.get("ins_name")%> does not share with
+											nonaffiliates so they can market to you.</li>
 									</ul></td>
 							</tr>
 							<tr>
@@ -412,7 +495,7 @@ String[] text_area={"who_provide","how_protect","how_collect","aff_in","nonaff_i
 						</thead>
 						<tbody>
 							<tr>
-								<td width="50%" align="left"><p><%=map.get("ohter_info") %></p></td>
+								<td width="50%" align="left"><p><%=map.get("ohter_info")%></p></td>
 							</tr>
 						</tbody>
 					</table>

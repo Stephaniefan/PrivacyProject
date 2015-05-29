@@ -32,9 +32,9 @@ public class PolicySubmitServlet extends HttpServlet {
 			"inves_ex", "cre_insu_sco", "in_claim_his", "med_info", "over_his",
 			"pur_his", "acc_trans", "risk_to", "me_rela", "cre_card",
 			"mor_rate", "re_ass", "ch_acc", "em_info", "wire_trans" };
-	String[] yes_no = { "everyday1", "everyday2", "marketing1", "marketing2",
+	String[] yes_no = { "everyday1", "everyday2","everyday2_1","everday2_2","marketing1", "marketing2",
 			"joint1", "joint2", "afeveryday1", "afeveryday2", "creeveryday1",
-			"creeveryday2", "afmarket1", "afmarket2", "nonmarketdeb1",
+			"creeveryday2","creeveryday2_1","creeveryday2_2", "afmarket1", "afmarket2", "nonmarketdeb1",
 			"nonmarketdeb2", "nonmarket1", "nonmarket2" };
 	String[] text_area = { "who_provide", "how_protect", "how_collect",
 			"aff_in", "nonaff_in", "joint_market_in", "other_info" };
