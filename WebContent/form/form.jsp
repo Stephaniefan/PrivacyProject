@@ -220,10 +220,25 @@
 
 								<td width="75%" align="left">
 									<ul>
+
+
+										<%
+											if (map.get("   ").equals("Yes")||map.get("  ").equals("Yes")) {
+										%>
 										<li>Call &nbsp&nbsp&nbsp<%=map.get("phone")%>&nbsp&nbsp&nbspour
 											menu will prompt you through your choices
 										</li>
+										<%
+											}
+										%>
+										<%
+											if (map.get("   ").equals("Yes")) {
+										%>
+
 										<li>Visit us online:&nbsp&nbsp&nbsp<%=map.get("url")%></li>
+										<%
+											}
+										%>
 									</ul>
 									<p>Please note: If you are a new customer, we can begin
 										sharing your information 30 days from the date we sent this
@@ -271,6 +286,11 @@
 		</div>
 	</div>
 
+
+
+	<%
+		if (map.get("   ").equals("Yes")) {
+	%>
 	<div class="bs-docs-section">
 
 		<div class="row">
@@ -288,17 +308,18 @@
 
 								<td width="15%" rowspan="2"><p>Leave Blank OR If you
 										have a joint account, your choice(s) will apply to everyone on
-										your account uncless you mark below.</p> <label><input type="radio"> Apply my
-										choices only to me</label></td>
+										your account uncless you mark below.</p> <label><input
+										type="radio"> Apply my choices only to me</label></td>
 
-								<td width="85%" align="left" colspan="2">Mark any/all you want to
-									limit: <label> <input type="radio"> &nbspDo not share
-										information about my creditworthines with your affiliates for
-										their everyday business purposes.
-								</label> <label><input type="radio">&nbsp Do not allow your
-										affiliates to use my personal information to market to me.</label> <label><input
-										type="radio"> &nbspDo not share my personal information with
-										nonaffiliates to market their products and services to me.</label>
+								<td width="85%" align="left" colspan="2">Mark any/all you
+									want to limit: <label> <input type="radio">
+										&nbspDo not share information about my creditworthines with
+										your affiliates for their everyday business purposes.
+								</label> <label><input type="radio">&nbsp Do not allow
+										your affiliates to use my personal information to market to
+										me.</label> <label><input type="radio"> &nbspDo not
+										share my personal information with nonaffiliates to market
+										their products and services to me.</label>
 								</td>
 							</tr>
 							<tr>
@@ -338,7 +359,9 @@
 			</div>
 		</div>
 	</div>
-
+	<%
+		}
+	%>
 
 	<div class="bs-docs-section">
 
