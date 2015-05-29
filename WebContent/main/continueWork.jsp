@@ -1,4 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.Map"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,28 +13,30 @@
 <link rel="stylesheet" href="css/bootswatch.min.css">
 
 <script>
-  var _gaq = _gaq || [];
-  _gaq.push([ '_setAccount', 'UA-23019901-1' ]);
-  _gaq.push([ '_setDomainName', "bootswatch.com" ]);
-  _gaq.push([ '_setAllowLinker', true ]);
-  _gaq.push([ '_trackPageview' ]);
+	var _gaq = _gaq || [];
+	_gaq.push([ '_setAccount', 'UA-23019901-1' ]);
+	_gaq.push([ '_setDomainName', "bootswatch.com" ]);
+	_gaq.push([ '_setAllowLinker', true ]);
+	_gaq.push([ '_trackPageview' ]);
 
-  (function() {
-    var ga = document.createElement('script');
-    ga.type = 'text/javascript';
-    ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl'
-        : 'http://www')
-        + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(ga, s);
-  })();
+	(function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+				: 'http://www')
+				+ '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
 </script>
+<script type="text/javascript" src="js/validations.js"></script>
 </head>
 <body>
 	<%
- Map<String,String> map = (Map<String,String>)session.getAttribute("continue");
-%>
+		Map<String, String> map = (Map<String, String>) session
+				.getAttribute("continue");
+	%>
 	<div class="container">
 		<!-- Navbar
       ================================================== -->
@@ -53,7 +59,8 @@
 							<div class="navbar-collapse collapse navbar-responsive-collapse">
 								<ul class="nav navbar-nav">
 									<li><a href="index.jsp">New Form</a></li>
-									<li class="active"><a href="upload.html">Continue Working</a></li>
+									<li class="active"><a href="upload.html">Continue
+											Working</a></li>
 									<li><a href="#">Policy Comparison</a></li>
 									<li class="dropdown"><a href="#" class="dropdown-toggle"
 										data-toggle="dropdown">About Us <b class="caret"></b></a></li>
@@ -85,7 +92,9 @@
 
 						<div class="col-lg-12">
 							<div class="well bs-component">
-								<form class="form-horizontal" action="../PolicySubmitServlet">
+								<form name="form1" class="form-horizontal"
+									onsubmit="return validateForm()"
+									action="../PolicySubmitServlet">
 									<fieldset>
 										<legend>Privacy Form for Depositary Institution</legend>
 
@@ -95,15 +104,20 @@
 												Name</label>
 											<div class="col-lg-10">
 
-												<% if(map != null && map.get("ins_name") != null){%>
+												<%
+													if (map != null && map.get("ins_name") != null) {
+												%>
 												<input type="text" class="form-control" id="name"
 													name="ins_name" placeholder="Institution Name"
 													value=<%=map.get("ins_name")%>>
-												<% }else{
-                    							 %>
+												<%
+													} else {
+												%>
 												<input type="text" class="form-control" id="name"
 													name="ins_name" placeholder="Institution Name">
-												<%} %>
+												<%
+													}
+												%>
 
 											</div>
 
@@ -120,7 +134,8 @@
 												Revised Date</label>
 											<div class="col-lg-10">
 												<input type="month" class="form-control" id="date"
-													name="date" placeholder="mm/yyyy" value=<%=map.get("date")%>>
+													name="date" placeholder="mm/yyyy"
+													value=<%=map.get("date")%>>
 											</div>
 
 											<label for="inputWebsite" class="col-lg-2 control-label">Website
@@ -146,84 +161,127 @@
 														id="checkbox" name="ssn" value="SSN," checked>SSN
 														&nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="income" value="income,">Income
-														&nbsp;&nbsp;&nbsp;
+														name="x" value="income" onclick='count(0)'
+				
+														<c:forEach items="${array}" var="check">
+														<c:if test="${check eq 'income'}">checked</c:if>
+				</c:forEach>>Income &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="acc_balance" value="Account Balance,">Account
+														name="x" value="Account Balance" onclick='count(1)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Account Balance'}">checked</c:if>
+				</c:forEach>>Account
 														Balances &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="pay_his" value="Payment History,">Payment
+														name="x" value="Payment History" onclick='count(2)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Payment History'}">checked</c:if>
+				</c:forEach>>Payment
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="tran_his" value="Transaction History,">Transaction
+														name="x" value="Transaction History" onclick='count(3)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Transaction History'}">checked</c:if>
+				</c:forEach>>Transaction
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="tran_los_his"
-														value="Transaction or Loss History,">Transaction
+														name="x" value="Transaction or Loss History"
+														onclick='count(4)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Transaction or Loss History'}">checked</c:if>
+				</c:forEach>>Transaction
 														or Loss History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="cre_his" value="Credit History,">Credit
+														name="x" value="Credit History" onclick='count(5)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Credit History'}">checked</c:if>
+				</c:forEach>>Credit
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="cre_sco" value="Credit Scores,">Credit
+														name="x" value="Credit Scores" onclick='count(6)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Credit Scores'}">checked</c:if>
+				</c:forEach>>Credit
 														Scores &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="ass" value="Assets",>Assets
+														name="x" value="Assets" onclick='count(7)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Assets'}">checked</c:if>
+				</c:forEach>>Assets
 														&nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="inves_ex" value="Investment,">Investment
+														name="x" value="Investment" onclick='count(8)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Investment'}">checked</c:if>
+				</c:forEach>>Investment
 														Experience &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="cre_insu_sco"
-														value="Credit-based Insurance Scores,">Credit-based
+														name="x" value="Credit-based Insurance Scores"
+														onclick='count(9)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Credit-based Insurance Scores'}">checked</c:if>
+				</c:forEach>>Credit-based
 														Insurance Scores &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="in_claim_his"
-														value="Insurance Claim History,">Insurance Claim
-														History &nbsp;&nbsp;&nbsp;
+														name="x" value="Insurance Claim History"
+														onclick='count(10)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Credit-based Insurance Scores'}">checked</c:if>
+				</c:forEach>>Insurance
+														Claim History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="med_info" value="Medical Information,">Medical
+														name="x" value="Medical Information" onclick='count(11)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Medical Information'}">checked</c:if>
+				</c:forEach>>Medical
 														Information &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="over_his" value="Overdraft History,">Overdraft
+														name="x" value="Overdraft History" onclick='count(12)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Overdraft History'}">checked</c:if>
+				</c:forEach>>Overdraft
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="pur_his" value="Purchase History,">Purchase
+														name="x" value="Purchase History" onclick='count(13)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Purchase History'}">checked</c:if>
+				</c:forEach>>Purchase
 														History &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="acc_trans"
-														value="Account Transactions">Account Transactions
-														&nbsp;&nbsp;&nbsp;
+														name="x" value="Account Transactions" onclick='count(14)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Account Transactions'}">checked</c:if>
+				</c:forEach>>Account
+														Transactions &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="risk_to" value="Risk Tolerance,">Risk
+														name="x" value="Risk Tolerance" onclick='count(15)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Risk Tolerance'}">checked</c:if>
+				</c:forEach>>Risk
 														Tolerance &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="me_rela"
-														value="Medical-related Debts,">Medical-related
+														name="x" value="Medical-related Debts" onclick='count(16)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Medical-related Debts'}">checked</c:if>
+				</c:forEach>>Medical-related
 														Debts &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="cre_card"
-														value="Credit Card or Other,">Credit Card or Other
-														Debt &nbsp;&nbsp;&nbsp;
-													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="mor_rate"
-														value="Mortagage Rates and Payments,">Mortgage
+													</label> <label class="col-md-3"><input type="checkbox"
+														name="x" value="Credit Card or Other" onclick='count(17)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Credit Card or Other'}">checked</c:if>
+				</c:forEach>>Credit
+														Card or Other Debt &nbsp;&nbsp;&nbsp; </label> <label
+														class="col-md-3"> <input type="checkbox" name="x"
+														value="Mortagage Rates and Payments" onclick='count(18)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Mortagage Rates and Payments'}">checked</c:if>
+				</c:forEach>>Mortgage
 														Rates and Payments &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="re_ass" value="Retirement Assets,">Retirement
+														name="x" value="Retirement Assets" onclick='count(19)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Retirement Assets'}">checked</c:if>
+				</c:forEach>>Retirement
 														Assets &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="ch_acc"
-														value="Checking Account Information,">Checking
+														name="x" value="Checking Account Information"
+														onclick='count(20)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Checking Account Information'}">checked</c:if>
+				</c:forEach>>Checking
 														Account Information &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="em_info"
-														value="Employment Information,">Employment
+														name="x" value="Employment Information"
+														onclick='count(21)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Employment Information'}">checked</c:if>
+				</c:forEach>>Employment
 														Information &nbsp;&nbsp;&nbsp;
 													</label> <label class="col-md-3"> <input type="checkbox"
-														id="checkbox" name="wire_trans"
-														value="Wire Transfer Instructions,">Wire Transfer
-														Instructions &nbsp;&nbsp;&nbsp;
+														name="x" value="Wire Transfer Instructions"
+														onclick='count(22)'
+														<c:forEach var="check" items="${array}"> <c:if test="${check eq 'Wire Transfer Instructions'}">checked</c:if>
+				</c:forEach>>Wire
+														Transfer Instructions &nbsp;&nbsp;&nbsp;
 													</label>
 												</div>
 											</div>
@@ -233,26 +291,26 @@
 										<div class="row" style="margin: 7px">
 											<div class="form-group col-md-6">
 												<!-- <div class="col-lg-10"> -->
-													<label for="radio" class="control-label">Reasons to
-														share your customers personal information</label>
+												<label for="radio" class="control-label">Reasons to
+													share your customers personal information</label>
 												<!-- </div> -->
 											</div>
 
 											<div class="form-group col-md-3">
 												<!-- <div class="col-lg-10"> -->
-													<label for="ratio" class="col-lg-2 control-label">Does
-														your institution share?</label>
+												<label for="ratio" class="col-lg-2 control-label">Does
+													your institution share?</label>
 												<!-- </div> -->
 
 											</div>
 											<div class="form-group col-md-3">
 												<!-- <div class="col-lg-10"> -->
-													<label for="ratio" class="col-lg-2 control-label">Can
-														your customer limit this sharing?</label>
+												<label for="ratio" class="col-lg-2 control-label">Can
+													your customer limit this sharing?</label>
 												<!-- </div> -->
 											</div>
 										</div>
-										
+
 										<div class="row" style="margin: 7px">
 											<div class="form-group col-md-6">
 												<div class="col-lg-10">
@@ -269,9 +327,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="everyday1" id="optionsRadios1"
-															value="y"> Yes
+															value="y" <% if(map.get("everyday1").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="everyday1"
-															id="optionsRadios1" value="n" checked> No
+															id="optionsRadios1" value="n" <% if(map.get("everyday1").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -282,9 +340,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="everyday2" id="optionsRadios1"
-															value="y" checked> Yes
+															value="y" <% if(map.get("everyday2").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="everyday2"
-															id="optionsRadios1" value="n"> No
+															id="optionsRadios1" value="n" <% if(map.get("everyday2").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -306,22 +364,22 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="marketing1" id="optionsRadios1"
-															value="y"> Yes
+															value="y" <% if(map.get("marketing1").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="marketing1"
-															id="optionsRadios1" value="n" checked> No
+															id="optionsRadios1" value="n" <% if(map.get("marketing1").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
-
+ <c:out value="${map['marketing1']}"/>hello
 											</div>
 											<div class="form-group col-md-3">
 												<div class="col-lg-10">
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="marketing2" id="optionsRadios1"
-															value="y" checked> Yes
+															value="y" <% if(map.get("marketing2").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="marketing2"
-															id="optionsRadios1" value="n"> No
+															id="optionsRadios1" value="n" <% if(map.get("marketing2").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -340,10 +398,10 @@
 												<div class="col-lg-10">
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-															type="radio" name="joint1" id="optionsRadios1" value="y">
+															type="radio" name="joint1" id="optionsRadios1" value="y" <% if(map.get("joint1").equals("y")){%>checked<%} %>>
 															Yes
 														</label> <label> <input type="radio" name="joint1"
-															id="optionsRadios1" value="n" checked> No
+															id="optionsRadios1" value="n" <% if(map.get("joint1").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -354,9 +412,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="joint2" id="optionsRadios1" value="y"
-															checked> Yes
+															<% if(map.get("joint2").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="joint2"
-															id="optionsRadios1" value="n"> No
+															id="optionsRadios1" value="n" <% if(map.get("joint2").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -377,9 +435,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="afeveryday1" id="optionsRadios1"
-															value="y"> Yes
+															value="y" <% if(map.get("afeveryday1").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="afeveryday1"
-															id="optionsRadios1" value="n" checked> No
+															id="optionsRadios1" value="n" <% if(map.get("afeveryday1").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -389,9 +447,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="afeveryday2" id="optionsRadios1"
-															value="y" checked> Yes
+															value="y" <% if(map.get("afeveryday2").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="afeveryday2"
-															id="optionsRadios1" value="n"> No
+															id="optionsRadios1" value="n" <% if(map.get("afeveryday2").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -412,9 +470,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="creeveryday1" id="optionsRadios1"
-															value="y"> Yes
+															value="y" <% if(map.get("creeveryday1").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="creeveryday1"
-															id="optionsRadios1" value="n" checked> No
+															id="optionsRadios1" value="n" <% if(map.get("creeveryday1").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -425,9 +483,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="creeveryday2" id="optionsRadios1"
-															value="y" checked> Yes
+															value="y" <% if(map.get("creeveryday2").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="creeveryday2"
-															id="optionsRadios1" value="n"> No
+															id="optionsRadios1" value="n" <% if(map.get("creeveryday2").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -449,9 +507,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="afmarket1" id="optionsRadios1"
-															value="y"> Yes
+															value="y" <% if(map.get("afmarket1").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="afmarket1"
-															id="optionsRadios1" value="n" checked> No
+															id="optionsRadios1" value="n" <% if(map.get("afmarket1").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -462,9 +520,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="afmarket2" id="optionsRadios1"
-															value="y" checked> Yes
+															value="y" <% if(map.get("afmarket2").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="afmarket2"
-															id="optionsRadios1" value="n"> No
+															id="optionsRadios1" value="n" <% if(map.get("afmarket2").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -488,9 +546,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="nonmarketdeb1" id="optionsRadios1"
-															value="y"> Yes
+															value="y" <% if(map.get("nonmarketdeb1").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="nonmarketdeb1"
-															id="optionsRadios1" value="n" checked> No
+															id="optionsRadios1" value="n" <% if(map.get("nonmarketdeb1").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -501,9 +559,9 @@
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="nonmarketdeb2" id="optionsRadios1"
-															value="y" checked> Yes
+															value="y" <% if(map.get("nonmarketdeb2").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="nonmarketdeb2"
-															id="optionsRadios1" value="n"> No
+															id="optionsRadios1" value="n" <% if(map.get("nonmarketdeb2").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
@@ -517,38 +575,38 @@
 												<div class="col-lg-10">
 													<label for="ratio" class="control-label">For
 														nonaffiliates to market to you &mdash;€”</label>
-													<p> for accounts other than credit card accounts and
+													<p>for accounts other than credit card accounts and
 														Sponsored Accounts, such as insurance, investments,
-														deposit and lending </p>
+														deposit and lending</p>
 												</div>
 											</div>
 
-											<div class="form-group col-md-3">
+<%-- 											<div class="form-group col-md-3">
 												<div class="col-lg-10">
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="nonmarket1" id="optionsRadios1"
-															value="y"> Yes
+															value="y" <% if(map.get("nonmarket1").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="nonmarket1"
-															id="optionsRadios1" value="n" checked> No
+															id="optionsRadios1" value="n" <% if(map.get("nonmarket1").equals("n")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
-
-											</div>
+ --%>
+	<%-- 										</div>
 											<div class="form-group col-md-3">
 												<div class="col-lg-10">
 													<div class="radio">
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 															type="radio" name="nonmarket2" id="optionsRadios1"
-															value="y" checked> Yes
+															value="y" <% if(map.get("nonmarket2").equals("y")){%>checked<%} %>> Yes
 														</label> <label> <input type="radio" name="nonmarket2"
-															id="optionsRadios1" value="n"> No
+															id="optionsRadios1" value="n" <% if(map.get("nonmarket2").equals("y")){%>checked<%} %>> No
 														</label>
 													</div>
 												</div>
 											</div>
-										</div>
+										</div> --%>
 
 										<!-- textarea -->
 										<div class="form-group col-md-12">
@@ -556,7 +614,7 @@
 												is providing this notice?</label>
 											<div class="col-lg-10">
 												<textarea class="form-control" rows="3" id="textArea"
-													name="who_provide"></textarea>
+													name="who_provide" <%=map.get("who_provide")%>></textarea>
 											</div>
 										</div>
 
@@ -566,7 +624,7 @@
 												information?</label>
 											<div class="col-lg-10">
 												<textarea class="form-control" rows="3" id="textArea"
-													name="how_protect"></textarea>
+													name="how_protect" <%=map.get("how_protect")%>></textarea>
 											</div>
 										</div>
 
@@ -576,7 +634,7 @@
 												information?</label>
 											<div class="col-lg-10">
 												<textarea class="form-control" rows="3" id="textArea"
-													name="how_collect"></textarea>
+													name="how_collect" <%=map.get("how_collect")%>></textarea>
 											</div>
 										</div>
 
@@ -585,7 +643,7 @@
 												Information</label>
 											<div class="col-lg-10">
 												<textarea class="form-control" rows="3" id="textArea"
-													name="aff_in"></textarea>
+													name="aff_in" <%=map.get("aff_in")%>></textarea>
 											</div>
 										</div>
 
@@ -594,7 +652,7 @@
 												Information</label>
 											<div class="col-lg-10">
 												<textarea class="form-control" rows="3" id="textArea"
-													name="nonaff_in"></textarea>
+													name="nonaff_in" <%=map.get("nonaff_in")%>></textarea>
 											</div>
 										</div>
 
@@ -603,7 +661,7 @@
 												Marketing Information</label>
 											<div class="col-lg-10">
 												<textarea class="form-control" rows="3" id="textArea"
-													name="joint_market_in"></textarea>
+													name="joint_market_in" <%=map.get("joint_market_in")%>></textarea>
 											</div>
 										</div>
 
@@ -612,7 +670,7 @@
 												Important Information</label>
 											<div class="col-lg-10">
 												<textarea class="form-control" rows="3" id="textArea"
-													name="other_info"></textarea>
+													name="other_info" <%=map.get("other_info")%>></textarea>
 											</div>
 										</div>
 

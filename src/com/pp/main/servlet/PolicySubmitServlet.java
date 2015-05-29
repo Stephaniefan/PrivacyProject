@@ -136,7 +136,7 @@ public class PolicySubmitServlet extends HttpServlet {
 		// read basic
 		
 		//Instead of looping on name loop on values so that we can populate the data on the form when 
-		
+
 		for (String s : basic) {
 			String r = request.getParameter(s);
 			if (r == null || r.length() == 0) {
@@ -150,9 +150,9 @@ public class PolicySubmitServlet extends HttpServlet {
 				continue;
 			}
 			if (result.equals("y")) {
-				map.put(s, "Yes");
+				map.put(s, "y");
 			} else {
-				map.put(s, "No");
+				map.put(s, "n");
 			}
 		}
 		for (String s : text_area) {
@@ -162,14 +162,10 @@ public class PolicySubmitServlet extends HttpServlet {
 			}
 			map.put(s, r);
 		}
+		
+		String[] str=request.getParameterValues("x");
+		request.getSession().setAttribute("array", str);
 
-		for (String s : checkbox) {
-			String r = request.getParameter(s);
-			if (r == null || r.length() == 0) {
-				continue;
-			}
-			map.put(s, r);
-		}
 
 		return map;
 	}
