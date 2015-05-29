@@ -31,6 +31,76 @@
 	src="http://code.jquery.com/jquery-1.11.2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("input[name$='everyday1']").click(function() {
+			if ($(this).val() == "n") {
+				$("#hidden0_1").hide();
+				$("#hidden1").hide();
+				$("#hidden1_1").hide();
+			} else {
+				$("#hidden0_1").show();
+			}
+		});
+
+		$("input[name$='marketing1']").click(function() {
+			if ($(this).val() == "n") {
+				$("#hidden0_2").hide();
+				$("#hidden2").hide();
+				$("#hidden2_1").hide();
+			} else {
+				$("#hidden0_2").show();
+			}
+		});
+
+		$("input[name$='joint1']").click(function() {
+			if ($(this).val() == "n") {
+				$("#hidden0_3").hide();
+				$("#hidden3").hide();
+				$("#hidden3_1").hide();
+			} else {
+				$("#hidden0_3").show();
+			}
+		});
+
+		$("input[name$='afeveryday1']").click(function() {
+			if ($(this).val() == "n") {
+				$("#hidden0_4").hide();
+				$("#hidden4").hide();
+				$("#hidden4_1").hide();
+			} else {
+				$("#hidden0_4").show();
+			}
+		});
+
+		$("input[name$='nonmarketdeb1']").click(function() {
+			if ($(this).val() == "n") {
+				$("#hidden0_7").hide();
+				$("#hidden7").hide();
+				$("#hidden7_1").hide();
+			} else {
+				$("#hidden0_7").show();
+			}
+		});
+
+		$("input[name$='afmarket1']").click(function() {
+			if ($(this).val() == "n") {
+				$("#hidden0_6").hide();
+				$("#hidden6").hide();
+				$("#hidden6_1").hide();
+			} else {
+				$("#hidden0_6").show();
+			}
+		});
+
+		$("input[name$='creeveryday1']").click(function() {
+			if ($(this).val() == "n") {
+				$("#hidden0_5").hide();
+				$("#hidden5").hide();
+				$("#hidden5_1").hide();
+			} else {
+				$("#hidden0_5").show();
+			}
+		});
+
 		$("input[name$='hasorno']").click(function() {
 			if ($(this).val() == "y") {
 				$("#hidden0").show();
@@ -195,7 +265,7 @@
 			</div>
 		</div>
 
-		<h3 id="nav-tabs">New Forms</h3>
+		<h3 id="nav-tabs">New Form</h3>
 		<form name="form1" class="form-horizontal" role="form"
 			onsubmit="return validateForm()" action="../PolicySubmitServlet">
 			<div class="row">
@@ -219,6 +289,12 @@
 									<input type="tel" class="form-control" id="tel" name="phone"
 										placeholder="xxx-xxx-xxxx" value="">
 								</div>
+								
+								<label for="inputAdress" class="col-lg-2 control-label">Institution Address</label>
+								<div class="col-lg-10">
+									<input type="tel" class="form-control" id="tel" name="phone"
+										placeholder="xxx-xxx-xxxx" value="">
+								</div>
 							</div>
 
 							<div class="form-group col-md-6">
@@ -234,6 +310,12 @@
 								<div class="col-lg-10">
 									<input type="url" class="form-control" id="url" name="url"
 										placeholder="http://www.xxx.com" value="">
+								</div>
+								
+								<label for="inputAdress" class="col-lg-2 control-label">Institution Address</label>
+								<div class="col-lg-10">
+									<input type="tel" class="form-control" id="tel" name="phone"
+										placeholder="xxx-xxx-xxxx" value="">
 								</div>
 							</div>
 
@@ -252,90 +334,90 @@
 											id="checkbox" name="ssn" value="SSN," disabled checked>SSN
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="income" value="income,"
+											id="checkbox" name="x" value="income"
 											onclick='count(0)'>Income &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="acc_balance" value="Account Balance,"
-											onclick='count(1)'>Account Balances
+											id="checkbox" name="x" value="Account Balance"
+											onclick='count(1)'>Account Balance
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="pay_his" value="Payment History,"
+											id="checkbox" name="x" value="Payment History"
 											onclick='count(2)'>Payment History &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="tran_his" value="Transaction History,"
+											id="checkbox" name="x" value="Transaction History"
 											onclick='count(3)'>Transaction History
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="tran_los_his"
-											value="Transaction or Loss History," onclick='count(4)'>Transaction
+											id="checkbox" name="x"
+											value="Transaction or Loss History" onclick='count(4)'>Transaction
 											or Loss History &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="cre_his" value="Credit History,"
+											id="checkbox" name="x" value="Credit History"
 											onclick='count(5)'>Credit History &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="cre_sco" value="Credit Scores,"
+											id="checkbox" name="x" value="Credit Scores"
 											onclick='count(6)'>Credit Scores &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="ass" value="Assets," onclick='count(7)'>Assets
+											id="checkbox" name="x" value="Assets" onclick='count(7)'>Assets
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="inves_ex" value="Investment,"
+											id="checkbox" name="x" value="Investment"
 											onclick='count(8)'>Investment Experience
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="cre_insu_sco"
-											value="Credit-based Insurance Scores," onclick='count(9)'>Credit-based
+											id="checkbox" name="x"
+											value="Credit-based Insurance Scores" onclick='count(9)'>Credit-based
 											Insurance Scores &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="in_claim_his"
-											value="Insurance Claim History," onclick='count(10)'>Insurance
+											id="checkbox" name="x"
+											value="Insurance Claim History" onclick='count(10)'>Insurance
 											Claim History &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="med_info" value="Medical Information,"
+											id="checkbox" name="x" value="Medical Information"
 											onclick='count(11)'>Medical Information
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="over_his" value="Overdraft History,"
+											id="checkbox" name="x" value="Overdraft History"
 											onclick='count(12)'>Overdraft History
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="pur_his" value="Purchase History,"
+											id="checkbox" name="x" value="Purchase History"
 											onclick='count(13)'>Purchase History
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="acc_trans" value="Account Transactions"
+											id="checkbox" name="x" value="Account Transactions"
 											onclick='count(14)'>Account Transactions
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="risk_to" value="Risk Tolerance,"
+											id="checkbox" name="x" value="Risk Tolerance"
 											onclick='count(15)'>Risk Tolerance &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="me_rela" value="Medical-related Debts,"
+											id="checkbox" name="x" value="Medical-related Debts"
 											onclick='count(16)'>Medical-related Debts
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="cre_card" value="Credit Card or Other,"
+											id="checkbox" name="x" value="Credit Card or Other"
 											onclick='count(17)'>Credit Card or Other Debt
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="mor_rate"
-											value="Mortagage Rates and Payments," onclick='count(18)'>Mortgage
+											id="checkbox" name="x"
+											value="Mortagage Rates and Payments" onclick='count(18)'>Mortgage
 											Rates and Payments &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="re_ass" value="Retirement Assets,"
+											id="checkbox" name="x" value="Retirement Assets"
 											onclick='count(19)'>Retirement Assets
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="ch_acc"
-											value="Checking Account Information," onclick='count(20)'>Checking
+											id="checkbox" name="x"
+											value="Checking Account Information" onclick='count(20)'>Checking
 											Account Information &nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="em_info" value="Employment Information,"
+											id="checkbox" name="x" value="Employment Information"
 											onclick='count(21)'>Employment Information
 											&nbsp;&nbsp;&nbsp;
 										</label> <label class="col-md-3"> <input type="checkbox"
-											id="checkbox" name="wire_trans"
-											value="Wire Transfer Instructions," onclick='count(22)'>Wire
+											id="checkbox" name="x"
+											value="Wire Transfer Instructions" onclick='count(22)'>Wire
 											Transfer Instructions &nbsp;&nbsp;&nbsp;
 										</label>
 									</div>
@@ -393,9 +475,9 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="everyday1" value="y"> Yes
+												type="radio" name="everyday1" value="y" checked> Yes
 											</label> <label> <input type="radio" name="everyday1"
-												value="n" checked> No
+												value="n"> No
 											</label>
 										</div>
 									</div>
@@ -403,7 +485,7 @@
 
 
 
-								<div class="form-group col-md-3">
+								<div class="form-group col-md-3" id="hidden0_1">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
@@ -480,15 +562,15 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="marketing1" id="optionsRadios1" value="y">
-												Yes
+												type="radio" name="marketing1" id="optionsRadios1" value="y"
+												checked> Yes
 											</label> <label> <input type="radio" name="marketing1"
-												id="optionsRadios1" value="n" checked> No
+												id="optionsRadios1" value="n"> No
 											</label>
 										</div>
 									</div>
 								</div>
-								<div class="form-group col-md-3">
+								<div class="form-group col-md-3" id="hidden0_2">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
@@ -538,8 +620,9 @@
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 												type="radio" name="marketing2_2" id="option2_2y" value="y">
 												Telephone
-											</label>&nbsp; <label> <input type="radio" name="marketing2_2"
-												id="option2_2n" value="n" checked> Website
+											</label>&nbsp; <label> <input type="radio"
+												name="marketing2_2" id="option2_2n" value="n" checked>
+												Website
 											</label>&nbsp;<label> <input type="radio" name="marketing2_2"
 												id="option2_2y" value="y"> Telephone & Website
 											</label>&nbsp;<label> <input type="radio" name="marketing2_2"
@@ -562,15 +645,15 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="joint1" id="optionsRadios1" value="y">
-												Yes
+												type="radio" name="joint1" id="optionsRadios1" value="y"
+												checked> Yes
 											</label> <label> <input type="radio" name="joint1"
-												id="optionsRadios1" value="n" checked> No
+												id="optionsRadios1" value="n"> No
 											</label>
 										</div>
 									</div>
 								</div>
-								<div class="form-group col-md-3">
+								<div class="form-group col-md-3" id="hidden0_3">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
@@ -619,9 +702,10 @@
 												type="radio" name="joint2_2" value="y"> Telephone
 											</label>&nbsp; <label> <input type="radio" name="joint2_2"
 												value="n" checked> Website
-											</label> &nbsp;<label><input type="radio" name="joint2_2" value="y">
-												Telephone & Website </label>&nbsp;<label> <input type="radio"
-												name="joint2_2" value="y"> Mail-in form
+											</label> &nbsp;<label><input type="radio" name="joint2_2"
+												value="y"> Telephone & Website </label>&nbsp;<label>
+												<input type="radio" name="joint2_2" value="y">
+												Mail-in form
 											</label>
 
 										</div>
@@ -647,14 +731,14 @@
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 												type="radio" name="afeveryday1" id="optionsRadios1"
-												value="y"> Yes
+												value="y" checked> Yes
 											</label> <label> <input type="radio" name="afeveryday1"
-												id="optionsRadios1" value="n" checked> No
+												id="optionsRadios1" value="n"> No
 											</label>
 										</div>
 									</div>
 								</div>
-								<div class="form-group col-md-3">
+								<div class="form-group col-md-3" id="hidden0_4">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
@@ -705,13 +789,12 @@
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 												type="radio" name="afeveryday2_2" value="y">
 												Telephone
-											</label> &nbsp;<label> <input type="radio" name="afeveryday2_2"
-												value="n" checked> Website
-											</label> &nbsp;<label><input type="radio" name="afeveryday2_2"
-												value="y"> Telephone & Website </label>&nbsp;
-												<label> <input
-												type="radio" name="afeveryday2_2" value="y"> Mail-in
-												form
+											</label> &nbsp;<label> <input type="radio"
+												name="afeveryday2_2" value="n" checked> Website
+											</label> &nbsp;<label><input type="radio"
+												name="afeveryday2_2" value="y"> Telephone & Website
+											</label>&nbsp; <label> <input type="radio"
+												name="afeveryday2_2" value="y"> Mail-in form
 											</label>
 										</div>
 									</div>
@@ -734,15 +817,15 @@
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 												type="radio" name="creeveryday1" id="optionsRadios1"
-												value="y"> Yes
+												value="y" checked> Yes
 											</label> <label> <input type="radio" name="creeveryday1"
-												id="optionsRadios1" value="n" checked> No
+												id="optionsRadios1" value="n"> No
 											</label>
 										</div>
 									</div>
 
 								</div>
-								<div class="form-group col-md-3">
+								<div class="form-group col-md-3" id="hidden0_5">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
@@ -795,8 +878,9 @@
 												Telephone
 											</label> <label> <input type="radio" name="creeveryday2_2"
 												value="n" checked> Website
-											</label><label> <input type="radio" name="creeveryday2_2" value="y">
-											Telephone & Website </label><label> <input type="radio" name="creeveryday2_2"
+											</label><label> <input type="radio" name="creeveryday2_2"
+												value="y"> Telephone & Website
+											</label><label> <input type="radio" name="creeveryday2_2"
 												value="y"> Mail-in form
 											</label>
 										</div>
@@ -819,9 +903,9 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="hasorno" value="y"> Yes
-											</label> <label> <input type="radio" name="hasorno" value="n"
-												checked> No
+												type="radio" name="hasorno" value="y" checked> Yes
+											</label> <label> <input type="radio" name="hasorno" value="n">
+												No
 											</label>
 										</div>
 									</div>
@@ -851,7 +935,7 @@
 									</div>
 
 								</div>
-								<div class="form-group col-md-3">
+								<div class="form-group col-md-3" id="hidden0_6">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
@@ -904,10 +988,10 @@
 												type="radio" name="afmarket2_2" value="y"> Telephone
 											</label>&nbsp; <label> <input type="radio" name="afmarket2_2"
 												value="n" checked> Website
-											</label>&nbsp;<label> <input
-												type="radio" name="afmarket2_2" value="y"> Telephone & Website
-											</label>&nbsp;<label> <input
-												type="radio" name="afmarket2_2" value="y"> Mail-in form
+											</label>&nbsp;<label> <input type="radio" name="afmarket2_2"
+												value="y"> Telephone & Website
+											</label>&nbsp;<label> <input type="radio" name="afmarket2_2"
+												value="y"> Mail-in form
 											</label>
 										</div>
 									</div>
@@ -930,15 +1014,15 @@
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 												type="radio" name="nonmarketdeb1" id="optionsRadios1"
-												value="y"> Yes
+												value="y" checked> Yes
 											</label> <label> <input type="radio" name="nonmarketdeb1"
-												id="optionsRadios1" value="n" checked> No
+												id="optionsRadios1" value="n"> No
 											</label>
 										</div>
 									</div>
 
 								</div>
-								<div class="form-group col-md-3">
+								<div class="form-group col-md-3" id="hidden0_7">
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
@@ -988,14 +1072,16 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-												type="radio" name="nonmarketdeb2_2" value="y"> Telephone
-											</label> &nbsp;<label> <input type="radio" name="nonmarketdeb2_2"
-												value="n" checked> Website
-											</label>&nbsp;<label> <input
-												type="radio" name="nonmarketdeb2_2" value="y"> Telephone & Website
-											</label> &nbsp;<label> <input
-												type="radio" name="nonmarketdeb2_2" value="y"> Mail-in form
-											</label> 
+												type="radio" name="nonmarketdeb2_2" value="y">
+												Telephone
+											</label> &nbsp;<label> <input type="radio"
+												name="nonmarketdeb2_2" value="n" checked> Website
+											</label>&nbsp;<label> <input type="radio"
+												name="nonmarketdeb2_2" value="y"> Telephone &
+												Website
+											</label> &nbsp;<label> <input type="radio"
+												name="nonmarketdeb2_2" value="y"> Mail-in form
+											</label>
 										</div>
 									</div>
 								</div>
@@ -1013,6 +1099,9 @@
 							<div class="form-group col-md-12">
 								<label for="textArea" class="col-lg-2 control-label">Who
 									is providing this notice?</label>
+								<p class="col-lg-2">General types of institutions jointly
+									providing the notice and must separately identify those
+									institutions, e.g. xxx Bank, xxx Inc.</p>
 								<div class="col-lg-10">
 									<textarea class="form-control" rows="3" id="textArea"
 										name="who_provide"></textarea>
@@ -1022,6 +1111,9 @@
 							<div class="form-group col-md-12">
 								<label for="textArea" class="col-lg-2 control-label">How
 									does your institution protect customer's personal information?</label>
+								<p class="col-lg-2">Include information about the your use
+									of cookies or other measures it uses to safeguard personal
+									information. Please limited to a maximum of 30 words.</p>
 								<div class="col-lg-10">
 									<textarea class="form-control" rows="3" id="textArea"
 										name="how_protect"></textarea>
@@ -1031,6 +1123,7 @@
 							<div class="form-group col-md-12">
 								<label for="textArea" class="col-lg-2 control-label">How
 									does your institution collect customer's personal information?</label>
+								<p class="col-lg-2"></p>
 								<div class="col-lg-10">
 									<textarea class="form-control" rows="3" id="textArea"
 										name="how_collect"></textarea>
